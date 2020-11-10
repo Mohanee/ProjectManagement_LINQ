@@ -78,8 +78,12 @@ namespace LinqtoDataTable
             DataTable productTable= linqDT.AddToDataTableDemo(productReviewList);
 
             //UC9 Retrieve products which have isLike value is true
-            Console.WriteLine("products which have isLike value is true");
+            Console.WriteLine("\nproducts which have isLike value is true");
             linqDT.RetrieveIsLikeTrueProductsFromDataTable(productTable);
+
+            //UC10 Average Rating of each ProductID using LinQ
+            Console.WriteLine("\nAverage Rating of each ProductID using LinQ");
+            linqDT.GetAverageRatingByProductId(productTable);
         }
     }
 }
