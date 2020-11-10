@@ -72,6 +72,38 @@ namespace LinqtoDataTable
                 Console.Write(row.ProductId + "\t" + row.Average + "\n");
             }
         }
+
+        /// <summary>
+        /// Retrieves products which contain nice in their review
+        /// </summary>
+        /// <param name="table"></param>
+        public void RetrieveNiceReviewProducts(DataTable table)
+        {
+            var recordedData = from products in table.AsEnumerable()
+                               where products.Field<string>("Review").Contains("nice")
+                               select products;
+            foreach (var row in recordedData)
+            {
+                Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
+            }
+        }
+
+        /// <summary>
+        /// Method to order the products according to their ratings
+        /// </summary>
+        /// <param name="userId">UserID of the product</param>
+        /// <param name="table">DataTable</param>
+        public void OrderProductsByRating(int userId, DataTable table)
+        {
+            var recodedData = from products in table.AsEnumerable()
+                              where products.Field<int>("UserId") == userId
+                              orderby products.Field<double>("Rating")
+                              select products;
+            foreach (var row in recodedData)
+            {
+                Console.Write(row.Field<int>("ProductId") + "\t" + row.Field<int>("UserId") + "\t" + row.Field<double>("Rating") + "\t" + row.Field<string>("Review") + "\t" + row.Field<bool>("IsLike") + "\n");
+            }
+        }
     }
 }
 
