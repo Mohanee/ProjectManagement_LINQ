@@ -46,7 +46,7 @@ namespace LinqtoDataTable
                 Console.WriteLine($"{list.ProductID},{list.UserID},{list.Rating},{list.Review},{list.IsLike}");
             }
 
-            ManagementClass management = new ManagementClass();
+            /*ManagementClass management = new ManagementClass();
             //UC2 top 3 records
             Console.WriteLine("Top 3 records with highest rating\n");
             management.Top3Records(productReviewList);
@@ -62,6 +62,14 @@ namespace LinqtoDataTable
             //UC5 ProductID and reviews of all records
             Console.WriteLine("ProductID and reviews of all records");
             management.RetrieveProductIdAndReview(productReviewList);
+
+            //UC6 List all except the top 5 records
+            Console.WriteLine("Data after skipping top 5 records");
+            management.RetrieveProductsBySkippingTop5(productReviewList);*/
+
+            //UC8CreateTableUsingLINQ
+            LinqToDT linqDT = new LinqToDT();
+            linqDT.AddToDataTableDemo(productReviewList);
         }
     }
 }

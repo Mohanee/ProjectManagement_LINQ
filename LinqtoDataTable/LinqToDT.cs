@@ -7,25 +7,22 @@ namespace LinqtoDataTable
 {
     class LinqToDT
     {
-        public void AddToDataTableDemo()
+        /// <summary>
+        /// Adds and displays the data from productReviewList into Datatable
+        /// </summary>
+        /// <param name="listProductReviews">Product Reviw List</param>
+        public void AddToDataTableDemo(List<ProductReview> listProductReviews)
         {
             DataTable table = new DataTable();
-            table.Columns.Add("ID");
-            table.Columns.Add("ProductName");
+            table.Columns.Add("ProductId");
+            table.Columns.Add("UserId");
+            table.Columns.Add("Rating");
+            table.Columns.Add("Review");
+            table.Columns.Add("IsLike");
 
-            table.Rows.Add("1", "Chai");
-            table.Rows.Add("2", "Queso Carbels");
-            table.Rows.Add("3", "Tofu");
-            DisplayProductFromTable(table);
-        }
-
-        public void DisplayProductFromTable(DataTable table)
-        {
-            var productNames = from products in table.AsEnumerable() select products.Field<string>("ProductName");
-            Console.WriteLine("Product Name: ");
-            foreach (string productName in productNames)
+            foreach (ProductReview product in listProductReviews)
             {
-                Console.WriteLine(productName);
+                table.Rows.Add(product.ProductID, product.UserID, product.Rating, product.Review, product.IsLike);
             }
         }
     }

@@ -57,6 +57,7 @@ namespace LinqtoDataTable
             }
         }
 
+        //UC5
         /// <summary>
         /// Method to List product ID and review of all the records
         /// </summary>
@@ -72,6 +73,22 @@ namespace LinqtoDataTable
             foreach (var list in recordedData)
             {
                 Console.WriteLine("Product Id:- " + list.ProductID + "\t" + "Review: " + list.Review);
+            }
+        }
+
+        //UC6
+        /// <summary>
+        /// Retrieves products from list by skipping top 5 records
+        /// </summary>
+        /// <param name="listProductReview">Product Review List</param>
+        public void RetrieveProductsBySkippingTop5(List<ProductReview> listProductReview)
+        {
+            var recordedData = (from productReviews in listProductReview
+                                select productReviews).Skip(5);
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine("ProductID: " + list.ProductID + "UserId: " + list.UserID + "Rating: " + list.Rating
+                    + "Review: " + list.Review + "IsLike: " + list.IsLike);
             }
         }
     }
