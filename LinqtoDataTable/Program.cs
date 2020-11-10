@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Collections.Generic;
 
 namespace LinqtoDataTable
@@ -41,9 +42,14 @@ namespace LinqtoDataTable
 
             };
 
-            foreach (var list in productReviewList)
+            /*foreach (var list in productReviewList)
             {
                 Console.WriteLine($"{list.ProductID},{list.UserID},{list.Rating},{list.Review},{list.IsLike}");
+            }*/
+            foreach (var list in productReviewList)
+            {
+                Console.WriteLine("ProductID: " + list.ProductID + "UserID: " + list.UserID + "Rating: " + list.Rating
+                    + "Review: " + list.Review + "IsLike: " + list.IsLike);
             }
 
             /*ManagementClass management = new ManagementClass();
@@ -69,7 +75,11 @@ namespace LinqtoDataTable
 
             //UC8CreateTableUsingLINQ
             LinqToDT linqDT = new LinqToDT();
-            linqDT.AddToDataTableDemo(productReviewList);
+            DataTable productTable= linqDT.AddToDataTableDemo(productReviewList);
+
+            //UC9 Retrieve products which have isLike value is true
+            Console.WriteLine("products which have isLike value is true");
+            linqDT.RetrieveIsLikeTrueProductsFromDataTable(productTable);
         }
     }
 }
