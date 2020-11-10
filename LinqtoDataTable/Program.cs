@@ -84,6 +84,10 @@ namespace LinqtoDataTable
             //UC10 Average Rating of each ProductID using LinQ
             Console.WriteLine("\nAverage Rating of each ProductID using LinQ");
             linqDT.GetAverageRatingByProductId(productTable);
+
+            //UC11 Nice Review Products
+            Console.WriteLine("Products with Nice Review are: ");
+            linqDT.RetrieveNiceReviewProducts(productTable);
         }
     }
 }
