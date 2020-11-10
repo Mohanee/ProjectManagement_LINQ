@@ -18,6 +18,7 @@ namespace LinqtoDataTable
             table.Rows.Add("3", "Tofu");
             DisplayProductFromTable(table);
         }
+
         public void DisplayProductFromTable(DataTable table)
         {
             var productNames = from products in table.AsEnumerable() select products.Field<string>("ProductName");

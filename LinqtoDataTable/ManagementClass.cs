@@ -39,7 +39,7 @@ namespace LinqtoDataTable
                              select productReviews;
             foreach (var list in recordData)
             {
-                Console.WriteLine(list.ProductID);
+                Console.WriteLine("ProductID: "+list.ProductID);
             }
         }
 
@@ -53,7 +53,25 @@ namespace LinqtoDataTable
             var recordData = listProductReview.GroupBy(x => x.ProductID).Select(x => new { ProductID = x.Key, Count = x.Count() });
             foreach (var list in recordData)
             {
-                Console.WriteLine(list.ProductID + "-----------" + list.Count);
+                Console.WriteLine((list.ProductID)+"\t" + list.Count);
+            }
+        }
+
+        /// <summary>
+        /// Method to List product ID and review of all the records
+        /// </summary>
+        /// <param name="listProductReview"></param>
+        public void RetrieveProductIdAndReview(List<ProductReview> listProductReview)
+        {
+            var recordedData = from productReviews in listProductReview
+                               select new
+                               {
+                                   productReviews.ProductID,
+                                   productReviews.Review
+                               };
+            foreach (var list in recordedData)
+            {
+                Console.WriteLine("Product Id:- " + list.ProductID + "\t" + "Review: " + list.Review);
             }
         }
     }
